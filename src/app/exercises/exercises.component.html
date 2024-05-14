@@ -1,0 +1,35 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Exercises</h1>
+  <button mat-flat-button color="primary">Add Exercise</button>
+  <mat-grid-list cols="4" rowHeight="200px">
+    @for (card of cards | async; track card) {
+      <mat-grid-tile [colspan]="card.cols" [rowspan]="card.rows">
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title>
+              {{card.title}}
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item>Add to circuit</button>
+                <button mat-menu-item>Edit</button>
+                <button mat-menu-item>Delete</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div>Discription</div>
+            <div>Image</div>
+            <div>Video</div>
+            <mat-chip-set aria-label="Fish selection">
+              <div>tags:</div>
+              <mat-chip>Core</mat-chip>
+              <mat-chip>McGill's Big 3</mat-chip>
+            </mat-chip-set>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    }
+  </mat-grid-list>
+</div>
